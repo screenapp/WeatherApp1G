@@ -8,8 +8,6 @@ app.listen(port, () => console.log(`screen-app listening on port ${port}!`));
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize({
-  // The `host` parameter is required for other databases
-  // host: 'localhost'
   dialect: 'sqlite',
   storage: './database.sqlite'
 });
@@ -71,9 +69,9 @@ sequelize.sync({ force: true })
     console.log(`Database & tables created!`);
 
     Profile.bulkCreate([
-      { username: 'user1', password: 'screenappuser1', location: 'ottawa', newstag: 'ottawa', active: true },
+      { username: 'user1', password: 'screenappuser1', location: 'ottawa', newstag: 'ottawa', active: false },
       { username: 'user2', password: 'screenappuser2', location: 'ottawa', newstag: 'sports', active: false },
-      { username: 'user3', password: 'screenappuser3', location: 'miami', newstag: 'miami', active: false }
+      { username: 'user3', password: 'screenappuser3', location: 'miami', newstag: 'miami', active: true }
     ]).then(function() {
       return Profile.findAll();
     }).then(function(profiles) {
@@ -81,9 +79,7 @@ sequelize.sync({ force: true })
     });
   });
 
-//
 // Routes
-//
 app.get('/', (req, res) => res.send('Screen App'));
 
 app.get('/profiles', function(req, res) {
@@ -107,7 +103,7 @@ app.get('/profiles/search', function(req, res) {
   }).then(notes => res.json(notes));
 });
 
-/*app.get('/profiles/:id', function(req, res) {
+app.get('/profiles/:id', function(req, res) {
   Profile.findAll({ where: { id: req.params.id } }).then(profiles => res.json(profiles));
 });
 
@@ -137,4 +133,4 @@ app.delete('/profiles/:id', function(req, res) {
   }).then((profile) => {
     res.sendStatus(200);
   });
-});*/
+});

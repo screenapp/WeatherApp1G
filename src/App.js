@@ -134,7 +134,7 @@ function App() {
         {articleDisplay}
       </div>
       <div className="alerts">
-        {showAlert}
+        { (knockDisplay) ? showAlert : '' }
       </div>
     </div>
   );
