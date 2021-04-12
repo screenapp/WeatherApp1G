@@ -1,0 +1,86 @@
+* {
+  /*background-color: #696969;*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: montserrat, sans-serif;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  /*background-image: linear-gradient(to left, #696969, #000000);*/
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+  padding: 15px;
+}
+
+header .timeInput {
+  display: inline-block;
+  color: #212121;
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  font-size: 64px;
+  font-weight: 600;
+  font-style: italic;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+header:before {
+  content: "";
+  display: inline-block;
+  color: #212121;
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  font-size: 64px;
+  font-weight: 600;
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.temperatures h3 {
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  padding: 5px 15px;
+  font-size: 50px;
+  color: #212121;
+}
+
+.humidities h3 {
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  padding: 5px 15px;
+  font-size: 50px;
+  color: #212121;
+}
+
+.weathers h3 {
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  padding: 5px 15px;
+  display:inline;
+  font-size: 50px;
+  color: #212121;
+}
+
+.weathers h6 {
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  padding: 5px 15px;
+  display:inline;
+  font-size: 30px;
+  color: #212121;
+}
+
+.uvs h3 {
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  padding: 5px 15px;
+  font-size: 50px;
+  color: #212121;
+}
+
+.articles h3 {
+  /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
+  padding: 5px 15px;
+  font-size: 20px;
+  color: #212121;
+}
