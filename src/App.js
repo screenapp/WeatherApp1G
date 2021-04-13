@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   var date = new Date();
   var dateStr = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + 
-                date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " ";
+                date.getHours() + ":" + (date.getMinutes()<10?'0':'') + date.getMinutes() + " ";
   const [location, setLocation] = useState([]);
   const [tag, setTag] = useState([]);
   const [temperatures, setTemperatures] = useState([]); //channel 1 field 1
@@ -25,17 +25,14 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [timeField, setTimeField] = useState(dateStr + 'EST');
   var alert = useAlert();
-
-  var locations = "ottawa";
-  var tags = locations;
   
   useEffect(() => {
     const urls = [
       'http://localhost:4005/api/notes/search?active=true',
       'https://api.thingspeak.com/channels/1292014/feeds.json?api_key=5HX70GFJB36ILGO6&results=10',
       'https://api.thingspeak.com/channels/1323243/feeds.json?api_key=CZCL2QP71YWST6P5&results=10',
-      'http://api.openweathermap.org/data/2.5/weather?q='+locations+'&appid=d1118046076544b562399e8deaf8653a',
-      'https://newsapi.org/v2/everything?q='+tags+'&from='+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'&sortBy=popularity&pageSize=6&apiKey=7a4826f801d84e739cf7292a7e78f597'
+      'http://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=d1118046076544b562399e8deaf8653a',
+      'https://newsapi.org/v2/everything?q='+tag+'&from='+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'&sortBy=popularity&pageSize=6&apiKey=7a4826f801d84e739cf7292a7e78f597'
     ];
     Promise.all(urls.map(url =>
       fetch(url)
@@ -45,8 +42,8 @@ function App() {
   ))
       .then(data => {
         if (data != null)
-        setLocation(data[0]);
-        console.log(data[0]);
+        setLocation(data[0].location);
+        setTag(data[0].newstag);
         setTemperatures(data[1].feeds);
         setHumidities(data[1].feeds);
         setKnockOne(data[1].feeds);
